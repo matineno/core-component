@@ -1,0 +1,49 @@
+@font-face {
+    font-family: "Montserrat Light";
+    src: url('./fonts/Montserrat/Montserrat-Light.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: "Montserrat";
+    src: url(./fonts/Montserrat/Montserrat-Regular.ttf);
+  }
+  @font-face {
+    font-family: "Montserrat Medium";
+    src: url(./fonts/Montserrat/Montserrat-Medium.ttf);
+  }
+  @font-face {
+    font-family: "Montserrat SemiBold";
+    src: url(./fonts/Montserrat/Montserrat-SemiBold.ttf);
+  }
+  @font-face {
+    font-family: "Montserrat Bold";
+    src: url(./fonts/Montserrat/Montserrat-Bold.ttf);
+  }
+  @font-face {
+    font-family: "Montserrat ExtraBold";
+    src: url(./fonts/Montserrat/Montserrat-ExtraBold.ttf);
+  }
+  
+  
+  :root {
+    --primary: #f8f4f0;
+    --secondary: #1a1a1a;
+    --shopPrimary: #231f20;
+    --shopSecondary: #f1efef;
+    --productImage: #fefdfc;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+  }
+  
+  html {
+    overflow-y: scroll;
+  }
+  
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }

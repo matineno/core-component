@@ -1,0 +1,30 @@
+.results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .resultItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .resultImage {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+  }
+  
+  .resultDetails {
+    text-align: center;
+  }
+  
+  .resultDetails p {
+    margin: 5px 0;
+  }
+  
