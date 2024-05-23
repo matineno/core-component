@@ -14,7 +14,7 @@
   align-items: flex-start;
   width: 100%;
   padding: 25px 25px;
-  margin-top: 80px;
+  margin-top: 40px;
 }
 
 .leftSide, .rightSide {
@@ -26,80 +26,16 @@
 
 .leftSide {
   position: relative;
-  width: 250px; 
-  height: 460px; 
-  display: flex; 
+  width: 250px;
+  height: 460px;
+  display: flex;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
   margin: auto auto auto 5%;
 }
 
 .rightSide {
   padding: 10px 40px;
-}
-
-.cursor {
-  position: absolute;
-  display: none;
-  width: 80px;
-  height: 80px;
-  background: #231f20;
-  z-index: 15;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  transition: top 0.1s ease-out, left 0.1s ease-out;
-  color: var(--shopSecondary);
-  justify-content: center;
-  align-items: center;
-}
-
-.interactionArea {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-
-.leftClickArea {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 50%;
-  height: 100%;
-}
-
-.rightClickArea {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 50%;
-  height: 100%;
-  z-index: 1;
-}
-
-.leftClickArea:hover {
-  cursor: pointer;
-}
-
-.rightClickArea:hover {
-  cursor: pointer;
-}
-
-.bgStyle {
-  background: #fff;
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 560px;
-  margin-top: -60px;
-  overflow: hidden;
-}
-
-.productImageContainer {
-  position: relative;
-  width: 100%;
-  height: 100%;
 }
 
 .productImage {
@@ -132,12 +68,37 @@
   font-weight: 700;
 }
 
+.arrowContainer {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+  bottom: 50%;
+  z-index: 1000;
+}
+
+.arrow {
+  background-color: rgba(15, 13, 13, 0.6);
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  padding: 15px 20px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.arrow:hover {
+  background-color: rgba(2, 2, 2, 0.6);
+}
+
 .productTitle {
   font-size: 33px;
   font-family: "Montserrat SemiBold";
   font-weight: 600;
   text-align: left;
-  padding:70px 0 20px 0;
+  padding: 70px 0 10px 0;
 }
 
 .productDescription {
@@ -146,13 +107,12 @@
   text-align: left;
 }
 
-
 .productQuantity {
   margin: 12px 0;
   text-align: left;
   display: flex;
   align-items: center;
-  cursor: pointer;;
+  cursor: pointer;
 }
 
 .productQuantity label {
@@ -176,15 +136,15 @@
   font-family: "Montserrat Medium";
   font-weight: 500;
   letter-spacing: 2px;
-  margin: 20px 0;
+  margin: 15px 0;
   text-align: left;
 }
 
 .buyButtons {
   display: flex;
   justify-content: space-between;
-  width: 70%; 
-  margin-top: 20px;
+  width: 70%;
+  margin-top: 15px;
 }
 
 .addToBag,
@@ -194,10 +154,10 @@
 }
 
 .addToBag {
-  background: #c9c1b1;
+  background: #009dd1;
   border: none;
   outline: none;
-  color: var(--shopPrimary);
+  color: var(--shopSecondary);
   font-size: 0.9rem;
   cursor: pointer;
   text-transform: uppercase;
@@ -207,7 +167,7 @@
   letter-spacing: 3px;
   position: relative;
   margin-right: 40px;
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
 }
 
 .addToBag div {
@@ -245,7 +205,8 @@
 }
 
 .buyNow {
-  background: #8b6e3b;
+  background: #1f43bf;
+  display: none;
   border: none;
   outline: none;
   color: var(--shopSecondary);
@@ -259,7 +220,7 @@
 }
 
 .buyNow:hover {
-  background-color: #6b501f;
+  background-color: #173cbf;
 }
 
 .productGallery {
@@ -276,12 +237,36 @@
   font-size: 2.1rem;
 }
 
+.galleryImagesContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.galleryArrow {
+  background-color: rgba(15, 13, 13, 0.6);
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  padding: 15px 20px;
+  cursor: pointer;
+  border-radius: 50%;
+  position: relative;
+  bottom: 45px;
+  margin: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.galleryArrow:hover {
+  background-color: rgba(2, 2, 2, 0.6);
+}
+
 .galleryImages {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  justify-items: center;
-  margin-top: 40px;
-  margin-bottom: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  gap: 80px;
 }
 
 .galleryItem {
@@ -290,6 +275,7 @@
   box-sizing: border-box;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 50px;
 }
 
 .galleryItem:hover {
@@ -300,8 +286,8 @@
   width: max(14.229vw, 250px);
   height: max(14.229vw, 250px);
   object-fit: contain;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Added box shadow */
-  background-color: #faf8f8;
+  background-color: #fff;
+  border: 1px solid rgba(208, 204, 204, 0.1);
   transition: box-shadow 0.3s ease;
 }
 
@@ -310,7 +296,7 @@
 }
 
 .galleryItemName {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 600;
   margin-top: 10px;
   text-align: left;
@@ -320,6 +306,109 @@
   font-size: 1.1rem;
   color: #555;
   text-align: left;
+}
+
+.reviewSection {
+  width: 100%;
+  padding: 60px 110px;
+  background-color: #d7d4d1;
+  box-sizing: border-box;
+  background-image: url(../images/ZGhs2nWQR3WYAaLAvMpwg9.gif);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.reviewTitle {
+  font-size: 2.4rem;
+  font-family: "Montserrat SemiBold";
+  font-weight: 500;
+  margin-bottom: 30px;
+  color: #fff;
+  text-align: center;
+  margin: 50px auto 70px;
+  z-index: 1000;
+}
+
+.reviews {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.review {
+  background: #fff;
+  padding: 20px;
+  width: calc(50% - 30px);
+  max-width: calc(100% - 40px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+  gap: 10px;
+  border-radius: 5px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.review:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.reviewHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.reviewerInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.reviewerName {
+  font-size: 1.4rem;
+  font-family: "Montserrat SemiBold";
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.reviewDate {
+  font-size: 1rem;
+  color: #777;
+}
+
+.reviewRating {
+  font-size: 1.4rem;
+  color: #ffd700;
+}
+
+.reviewText {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+.specTitle {
+  font-size: 2.2rem;
+  text-align: left;
+  padding: 10px 0;
+  color: #009dd1;
+}
+
+.specifications {
+  list-style-type: none;
+  padding: 0;
+  font-size: 18px;
+}
+
+.specifications li {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.specifications strong {
+  font-weight: bold;
 }
 
 @media (max-width: 780px) {
@@ -349,109 +438,4 @@
     width: 45%;
     margin: 2.5%;
   }
-}
-
-.reviewSection {
-  width: 100%;
-  padding: 60px 110px;
-  background-color: #d7d4d1; 
-  box-sizing: border-box;
-  background-image: url(../images/Rico_Full.gif);
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.reviewTitle {
-  font-size: 2.4rem;
-  font-family: "Montserrat SemiBold";
-  font-weight: 500;
-  margin-bottom: 30px;
-  color: #fff;
-  text-align: center;
-  margin: 50px auto 70px;
-  z-index: 1000;
-}
-
-.reviews {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between; 
-}
-
-.review {
-  background: #fff;
-  padding: 20px;
-  width: calc(50% - 30px); 
-  max-width: calc(100% - 40px); 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 30px;
-  gap: 10px;
-  border-radius: 5px; 
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.review:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
-}
-
-.reviewHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15px;
-}
-
-.reviewerInfo {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.reviewerName {
-  font-size: 1.4rem;
-  font-family: "Montserrat SemiBold";
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 5px; 
-}
-
-.reviewDate {
-  font-size: 1rem;
-  color: #777;
-}
-
-.reviewRating {
-  font-size: 1.4rem;
-  color: #ffd700;
-}
-
-.reviewText {
-  font-size: 1.2rem; 
-  line-height: 1.6; 
-  color: #555;
-}
-
-
-
-.specTitle {
-  font-size: 2.2rem;
-  text-align: left;
-  padding: 10px 0;
-  color: #8b6e3b;
-}
-
-.specifications {
-  list-style-type: none;
-  padding: 0;
-  font-size: 18px;
-}
-
-.specifications li {
-  margin-bottom: 10px;
-  font-size: 20px;
-}
-
-.specifications strong {
-  font-weight: bold;
 }

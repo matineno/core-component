@@ -3,13 +3,12 @@
   justify-content: space-between;
   align-items: center;
   width: 90%;
-  top: 4%;
+  top: 2%;
   left: 5%;
   position: absolute;
   z-index: 5;
   cursor: default;
-  box-shadow: 0 4px 4px rgba(109, 75, 7, 0.1);
-  padding: 20px;
+  padding: 20px 60px;
   padding-bottom: 20px; 
 }
 

@@ -25,7 +25,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: var(--shopSecondary);
+  color: #009dd1;
   position: relative;
 }
 
@@ -37,7 +37,7 @@
   background: none;
   border: none;
   outline: none;
-  color: var(--shopSecondary);
+  color: #C4DFE6;
 }
 
 .svgClose {
@@ -60,7 +60,7 @@
 }
 
 .textField {
-  color: var(--shopSecondary);
+  color: #009dd1;
   background: none;
   border: none;
   outline: none;
@@ -74,13 +74,13 @@
 }
 
 .textField::placeholder {
-  color: var(--shopSecondary);
+  color: #009dd1;
 }
 
 .line {
   width: 50%;
   height: 0.26vw;
-  background: var(--shopSecondary);
+  background:#009dd1;
 }
 
 @media (max-width: 780px) {

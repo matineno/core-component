@@ -24,7 +24,7 @@ const motherboards = [
     category: "Motherboard",
     categoryId: "motherboards",
     id: "msi-b450-tomahawk-max",
-    name: "MSI B450 Tomahawk MAX PRO ULTRA",
+    name: "MSI B450 Tomahawk MAX ULTRA",
     price: 114.99,
     image: msiB450TomahawkMax,
     previewImage: prevMsiB450TomahawkMax,
@@ -35,7 +35,7 @@ const motherboards = [
       msiB450TomahawkMaxGallery4,
       msiB450TomahawkMaxGallery5,
     ],
-    description: "The MSI B450 Tomahawk MAX PRO ULTRA is designed for gamers who need reliable performance and excellent value.",
+    description: "The MSI B450 Tomahawk MAX ULTRA is designed for gamers who need reliable performance and excellent value.",
     specifications: {
       chipset: "AMD B450",
       memorySupport: "DDR4 4133 MHz",

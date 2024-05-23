@@ -3,102 +3,36 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styles from "../css/ProductPage.module.css";
 import allProducts from "../data/allProducts";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 const ProductPage = (props) => {
   const { productId } = useParams();
   const product = allProducts.find((product) => product.id === productId);
   const [index, setIndex] = useState(0);
-  const [cursor, setCursor] = useState(null);
-  const [cursorIsVisible, setCursorIsVisible] = useState(false);
-
-  useEffect(() => {
-    if (product) {
-      const image = document.getElementById("image");
-      if (image) {
-        image.style.opacity = 1;
-      }
-    }
-  }, [product]);
+  const [galleryStartIndex, setGalleryStartIndex] = useState(0);
+  const imagesPerPage = 3;
 
   const nextImage = () => {
-    if (product && product.gallery.length === 1) {
-      return null;
+    if (product && product.gallery.length > 1) {
+      setIndex((index + 1) % product.gallery.length);
     }
-
-    const image = document.getElementById("image");
-    if (image) {
-      image.style.opacity = 0;
-    }
-
-    setTimeout(() => {
-      if (product) {
-        if (index < product.gallery.length - 1) {
-          setIndex(index + 1);
-        } else {
-          setIndex(0);
-        }
-        if (image) {
-          image.style.opacity = 1;
-        }
-      }
-    }, 100);
   };
 
   const prevImage = () => {
-    if (product && product.gallery.length === 1) {
-      return null;
+    if (product && product.gallery.length > 1) {
+      setIndex((index - 1 + product.gallery.length) % product.gallery.length);
     }
+  };
 
-    const image = document.getElementById("image");
-    if (image) {
-      image.style.opacity = 0;
+  const nextGalleryImages = () => {
+    if (galleryStartIndex + imagesPerPage < allProducts.length) {
+      setGalleryStartIndex(galleryStartIndex + imagesPerPage);
     }
-
-    setTimeout(() => {
-      if (product) {
-        if (index > 0) {
-          setIndex(index - 1);
-        } else {
-          setIndex(product.gallery.length - 1);
-        }
-        if (image) {
-          image.style.opacity = 1;
-        }
-      }
-    }, 100);
   };
 
-  const showCursor = (e) => {
-    if (cursorIsVisible) {
-      const cursor = document.getElementById("cursor");
-      if (cursor) {
-        cursor.style.display = "flex";
-        cursor.style.top = `${e.pageY}px`;
-        cursor.style.left = `${e.pageX}px`;
-      }
+  const prevGalleryImages = () => {
+    if (galleryStartIndex - imagesPerPage >= 0) {
+      setGalleryStartIndex(galleryStartIndex - imagesPerPage);
     }
-    setCursorIsVisible(true);
-  };
-
-  const hideCursor = () => {
-    setCursorIsVisible(false);
-  };
-
-  const showLeftCursor = (e) => {
-    setCursor("left");
-    showCursor(e);
-  };
-
-  const showRightCursor = (e) => {
-    setCursor("right");
-    showCursor(e);
-  };
-
-  const cursorVariants = {
-    visible: { opacity: 0.8, scale: 1, x: "-50%", y: "-50%" },
-    hidden: { opacity: 0, scale: 0.8, x: "-50%", y: "-50%" },
   };
 
   const addToCart = () => {
@@ -111,7 +45,6 @@ const ProductPage = (props) => {
       style: "currency",
       currency: "USD",
     });
-
     return formatter.format(amount);
   };
 
@@ -141,69 +74,17 @@ const ProductPage = (props) => {
       date: "June 5, 2023",
     },
   ];
-  
 
   if (!product) {
     return <div>Loading...</div>;
   }
 
+  const currentGalleryImages = allProducts.slice(galleryStartIndex, galleryStartIndex + imagesPerPage);
+
   return (
     <div className={styles.container}>
       <main className={styles.main}>
         <div className={styles.leftSide}>
-          <AnimatePresence>
-            {cursorIsVisible && (
-              <motion.div
-                variants={cursorVariants}
-                initial="hidden"
-                animate="visible"
-                exit="hidden"
-                transition={{ ease: "easeOut", duration: 0.4 }}
-                id="cursor"
-                className={styles.cursor}
-              >
-                {cursor && cursor === "left" && (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z" />
-                  </svg>
-                )}
-                {cursor && cursor === "right" && (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="#efece9"
-                  >
-                    <path d="M7.33 24l-2.83-2.829 9.339-9.175-9.339-9.167 2.83-2.829 12.17 11.996z" />
-                  </svg>
-                )}
-              </motion.div>
-            )}
-          </AnimatePresence>
-          <div className={styles.interactionArea}>
-            <div
-              onMouseEnter={showLeftCursor}
-              onMouseMove={showLeftCursor}
-              onMouseLeave={hideCursor}
-              onClick={prevImage}
-              className={styles.leftClickArea}
-            />
-            <div
-              onMouseEnter={showRightCursor}
-              onMouseMove={showRightCursor}
-              onMouseLeave={hideCursor}
-              onClick={nextImage}
-              className={styles.rightClickArea}
-            />
-          </div>
-          <div className={styles.bgStyle} />
           <img
             id="image"
             src={product.gallery[index]}
@@ -216,25 +97,46 @@ const ProductPage = (props) => {
             </span>
             {` / ${product.gallery.length.toString().padStart(2, "0")}`}
           </div>
+          <div className={styles.arrowContainer}>
+            <button className={styles.arrow} onClick={prevImage}>
+              &#9664;
+            </button>
+            <button className={styles.arrow} onClick={nextImage}>
+              &#9654;
+            </button>
+          </div>
         </div>
         <aside className={styles.rightSide}>
-          <h2 className={styles.productTitle}>{product.name}</h2> {/* Product title moved here */}
-          <p className={styles.productDescription}>
-            {product.description}
-          </p>
+          <h2 className={styles.productTitle}>{product.name}</h2>
+          <p className={styles.productDescription}>{product.description}</p>
           {product.specifications && (
             <>
               <h3 className={styles.specTitle}>Specifications</h3>
               <ul className={styles.specifications}>
                 {Object.entries(product.specifications).map(([key, value]) => (
-                  <li key={key}><strong>{key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}:</strong> {value}</li>
+                  <li key={key}>
+                    <strong>
+                      {key
+                        .replace(/([A-Z])/g, " $1")
+                        .replace(/^./, (str) => str.toUpperCase())}
+                      :
+                    </strong>{" "}
+                    {value}
+                  </li>
                 ))}
               </ul>
             </>
           )}
           <div className={styles.productQuantity}>
             <label htmlFor="quantity">Quantity:</label>
-            <input type="number" id="quantity" name="quantity" min="1" max="10" defaultValue="1"/>
+            <input
+              type="number"
+              id="quantity"
+              name="quantity"
+              min="1"
+              max="10"
+              defaultValue="1"
+            />
           </div>
           <div className={styles.productPrice}>{format(product.price)}</div>
           <div className={styles.buyButtons}>
@@ -279,20 +181,28 @@ const ProductPage = (props) => {
 
       <div className={styles.productGallery}>
         <h3>Products You May Like</h3>
-        <div className={styles.galleryImages}>
-          {allProducts.slice(0, 4).map((product, index) => (
-            <div key={index} className={styles.galleryItem}>
-              <img
-                src={product.image}
-                alt={`${product.name}`}
-                className={styles.galleryImage}
-              />
-              <div className={styles.galleryItemInfo}>
-                <p className={styles.galleryItemName}>{product.name}</p>
-                <p className={styles.galleryItemPrice}>{format(product.price)}</p>
+        <div className={styles.galleryImagesContainer}>
+          <button className={styles.galleryArrow} onClick={prevGalleryImages}>
+            &#9664;
+          </button>
+          <div className={styles.galleryImages}>
+            {currentGalleryImages.map((product, index) => (
+              <div key={index} className={styles.galleryItem}>
+                <img
+                  src={product.image}
+                  alt={`${product.name}`}
+                  className={styles.galleryImage}
+                />
+                <div className={styles.galleryItemInfo}>
+                  <p className={styles.galleryItemName}>{product.name}</p>
+                  <p className={styles.galleryItemPrice}>{format(product.price)}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+          <button className={styles.galleryArrow} onClick={nextGalleryImages}>
+            &#9654;
+          </button>
         </div>
       </div>
     </div>
