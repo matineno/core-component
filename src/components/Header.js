@@ -17,11 +17,11 @@ function Header(props) {
     );
   }, [location]);
 
+  const isShopOrProductPage = location.pathname.includes("product") || location.pathname.includes("shopping-cart");
+
   return (
     <header
-      className={`${styles.container} ${
-        location.pathname !== "/" ? styles.headerWhiteBg : ""
-      }`}
+      className={`${styles.container} ${isShopOrProductPage ? styles.headerBg : ""}`}
     >
       <Link
         className={theme === "light" ? styles.logo : styles.logoBlack}

@@ -9,6 +9,7 @@ const ProductPage = (props) => {
   const product = allProducts.find((product) => product.id === productId);
   const [index, setIndex] = useState(0);
   const [galleryStartIndex, setGalleryStartIndex] = useState(0);
+  const [zoomLevel, setZoomLevel] = useState(1); // State for zoom level
   const imagesPerPage = 3;
 
   const nextImage = () => {
@@ -81,15 +82,34 @@ const ProductPage = (props) => {
 
   const currentGalleryImages = allProducts.slice(galleryStartIndex, galleryStartIndex + imagesPerPage);
 
+  const increaseZoom = () => {
+    setZoomLevel(zoomLevel + 0.5);
+  };
+
+  const decreaseZoom = () => {
+    if (zoomLevel > 1) {
+      setZoomLevel(zoomLevel - 0.5);
+    }
+  };
+
   return (
     <div className={styles.container}>
       <main className={styles.main}>
         <div className={styles.leftSide}>
+          <div className={styles.zoomControls}>
+            <button className={styles.zoomButton} onClick={increaseZoom}>
+              +
+            </button>
+            <button className={styles.zoomButton} onClick={decreaseZoom}>
+              -
+            </button>
+          </div>
           <img
             id="image"
             src={product.gallery[index]}
             alt={product.name}
-            className={styles.productImage}
+            className={`${styles.productImage}`}
+            style={{ transform: `scale(${zoomLevel})` }} // Apply zoom level
           />
           <div className={styles.galleryCounter}>
             <span className={styles.galleryCurrentIndex}>
