@@ -5,8 +5,9 @@ import Header from "./components/Header";
 import Search from "./components/Search";
 import HomePage from "./pages/HomePage";
 import ProductPage from "./pages/ProductPage";
+import NotFoundPage from "./pages/NotFoundPage";
 import ShopPage from "./pages/ShopPage";
-import Footer from "./components/Footer"; // Import the Footer component
+import Footer from "./components/Footer";
 import SearchResults from "./components/SearchResults"; // Import SearchResults component
 import allProducts from "./data/allProducts"; // Import your products data
 
@@ -127,6 +128,15 @@ export class App extends Component {
           </Route>
           <Route exact path="/shopping-cart/">
             <HomePage />
+          </Route>
+          <Route path="/shopping-cart/product/*">
+            <NotFoundPage />
+          </Route>
+          <Route path="/shopping-cart/catalog/*">
+            <NotFoundPage />
+          </Route>
+          <Route path="*">
+            <NotFoundPage />
           </Route>
         </Switch>
         <Search
