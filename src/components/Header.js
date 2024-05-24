@@ -11,14 +11,18 @@ function Header(props) {
   useEffect(() => {
     setTheme(
       location.pathname === "/shopping-cart" ||
-        location.pathname === "/shopping-cart/"
+      location.pathname === "/shopping-cart/"
         ? "light"
         : "dark"
     );
   }, [location]);
 
   return (
-    <header className={styles.container}>
+    <header
+      className={`${styles.container} ${
+        location.pathname !== "/" ? styles.headerWhiteBg : ""
+      }`}
+    >
       <Link
         className={theme === "light" ? styles.logo : styles.logoBlack}
         to="/shopping-cart"

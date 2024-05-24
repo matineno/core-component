@@ -13,7 +13,7 @@
   justify-content: space-between;
   align-items: flex-start;
   width: 100%;
-  padding: 25px 25px;
+  padding: 20px 25px;
   margin-top: 40px;
 }
 
@@ -53,7 +53,7 @@
 
 .galleryCounter {
   position: absolute;
-  bottom: -30px;
+  bottom: -10px;
   right: 20px;
   font-family: "Montserrat Medium";
   font-weight: 500;
