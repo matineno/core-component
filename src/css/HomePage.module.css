@@ -1,3 +1,6 @@
+main {
+  background-color: #f9f9f9;
+}
 .container {
   color: var(--primary);
   background: var(--secondary);
@@ -27,6 +30,10 @@
   font-family: "Montserrat";
   font-weight: 400;
   margin-bottom: 30px;
+}
+
+.s1Linkcontainer {
+  margin-top: 30px;
 }
 
 .s1Link {
@@ -76,15 +83,18 @@
 }
 
 .infoSection {
-  padding: 50px 20px;
+  padding: 0px 20px;
   background-color: #f9f9f9;
   color: #000;
 }
 
 .infoContent {
   max-width: 800px;
-  margin: 0 auto;
+  margin: 40px auto;
   text-align: center;
+    p {
+      text-align: left;
+    }
 }
 
 .infoTitle {
@@ -180,4 +190,63 @@
 
 .socialMedia a:hover {
   color: #8b6e3b; 
+}
+
+.productSection {
+  margin: -10px 0px;
+}
+
+.product:hover .frontImage {
+  transform: scale(1.05);
+  opacity: 0;
+}
+
+.product:hover .backImage {
+  transform: scale(1.05);
+  z-index: 0;
+  opacity: 1;
+}
+
+.frontImage {
+  width: max(18.229vw, 300px);
+  height: max(18.229vw, 300px);
+  object-fit: contain;
+  transform: scale(1);
+  background: var(--productImage);
+  transition: all 0.2s cubic-bezier(0.61, 1, 0.88, 1),
+  transform 0.4s cubic-bezier(0.61, 1, 0.88, 1);
+  opacity: 1;
+}
+
+.backImage {
+  width: max(18.229vw, 300px);
+  height: max(18.229vw, 300px);
+  object-fit: cover;
+  transform: scale(1);
+  background: var(--productImage);
+  transition: all 0.2s cubic-bezier(0.61, 1, 0.88, 1),
+  transform 0.4s cubic-bezier(0.61, 1, 0.88, 1);
+  z-index: -1;
+  opacity: 0;
+}
+
+.galleryImages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  justify-items: center;
+}
+
+.productGallery {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  padding: 20px 40px;
+  background-color: #FEFDFC;
+}
+
+.productGallery h3 {
+  padding: 50px;
+  padding-bottom: 40px;
+  text-align: center;
+  font-size: 2.1rem;
 }

@@ -116,12 +116,14 @@
 .product:hover .frontImage {
   transform: scale(1.05);
   opacity: 0;
+  cursor: pointer;
 }
 
 .product:hover .backImage {
   transform: scale(1.05);
   z-index: 0;
   opacity: 1;
+  cursor: pointer;
 }
 
 .productLink {
