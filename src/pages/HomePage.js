@@ -4,10 +4,31 @@ import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faTwitter, faInstagram, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import styles from "../css/HomePage.module.css";
+import productStyles from "../css/ProductPage.module.css";
+import shopStyles from "../css/ShopPage.module.css";
 import s1Image from "../images/rtx-3090.jpg";
 import progressGraph from "../images/progress-graph.jpg"; 
+import allProducts from "../data/allProducts";
+
+const shuffleArray = (array) => {
+  let currentIndex = array.length, randomIndex;
+
+  while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+
+  return array;
+};
 
 const HomePage = (props) => {
+  const shuffledProducts1 = shuffleArray([...allProducts]).slice(0, 4);
+  const shuffledProducts2 = shuffleArray([...allProducts]).slice(5, 9);
+
+
   return (
     <div className={styles.container}>
       <main>
@@ -33,12 +54,13 @@ const HomePage = (props) => {
             animate={{ x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            Now available for preorder, shipping December, 2024.
+            Now available for preorder.
           </motion.p>
           <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ duration: 0.8 }}
+            className={styles.s1Linkcontain}
           >
             <Link className={styles.s1Link} to="/shopping-cart/catalog">
               Shop now
@@ -53,6 +75,83 @@ const HomePage = (props) => {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.5 }}
         >
+          <div className={styles.productGallery}>
+            <h3>New Arrivals</h3>
+            <div className={styles.productSection}>
+              <div className={styles.galleryImages}>
+                {shuffledProducts1.map((product, index) => (
+                  <motion.li
+                  key={product.id}
+                  className={shopStyles.product}
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 50 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <Link
+                    to={`/shopping-cart/products/${product.id}`}
+                    className={shopStyles.productLink}
+                  >
+                    <div key={index} className={productStyles.galleryItem}>
+                      <div className={shopStyles.productImage}>
+                        <img
+                          className={styles.frontImage}
+                          src={product.image}
+                          alt={product.name}
+                        />
+                        <img
+                          className={styles.backImage}
+                          src={product.previewImage}
+                          alt={product.name}
+                        />
+                      </div>
+                      <div className={productStyles.galleryItemInfo}>
+                        <p className={productStyles.galleryItemName}>{product.name}</p>
+                        <p className={productStyles.galleryItemPrice}>${product.price}</p>
+                      </div>
+                    </div>
+                  </Link>
+                </motion.li>
+                ))}
+              </div>
+              <div className={styles.galleryImages}>
+                {shuffledProducts2.map((product, index) => (
+                  <motion.li
+                  key={product.id}
+                  className={shopStyles.product}
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 50 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <Link
+                    to={`/shopping-cart/products/${product.id}`}
+                    className={shopStyles.productLink}
+                  >
+                    <div className={shopStyles.productImage}>
+                      <img
+                        className={styles.frontImage}
+                        src={product.image}
+                        alt={product.name}
+                      />
+                      <img
+                        className={styles.backImage}
+                        src={product.previewImage}
+                        alt={product.name}
+                      />
+                    </div>
+                    <div className={shopStyles.productName}>
+                      {product.name}
+                    </div>
+                    <div className={shopStyles.productPrice}>
+                      ${product.price}
+                    </div>
+                  </Link>
+                </motion.li>
+                ))}
+              </div>
+            </div>
+          </div>
           <div className={styles.infoContent}>
             <h2 className={styles.infoTitle}>About Core Components</h2>
             <p className={styles.infoText}>
