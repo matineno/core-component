@@ -60,7 +60,7 @@ const HomePage = (props) => {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ duration: 0.8 }}
-            className={styles.s1Linkcontain}
+            className={styles.s1Linkcontainer}
           >
             <Link className={styles.s1Link} to="/shopping-cart/catalog">
               Shop now
