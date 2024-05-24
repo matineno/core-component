@@ -1,3 +1,5 @@
+/* NotFoundPage.module.css */
+
 .container {
   background: var(--shopSecondary);
   min-height: 100vh;
@@ -22,15 +24,19 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   color: #000;
-  h3 {
-    text-align: center;
-  }
-  p {
-    margin-top: 10px;
-    text-align: center;
-  }
+}
+
+h3 {
+  text-align: center;
+}
+
+p {
+  margin-top: 10px;
+  text-align: center;
 }
 
 .image404container {
@@ -48,4 +54,44 @@
   margin: 0 auto;
 }
 
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
 
+.s1Link, .s2Link {
+  border: none;
+  background: #ffffff;
+  color: var(--secondary);
+  padding: 16px 40px;
+  cursor: pointer;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  font-family: "Montserrat SemiBold";
+  font-weight: 600;
+}
+
+.s1Link:hover:before, .s2Link:hover:before {
+  transform: translate3d(3px, 3px, 0);
+}
+
+.s1Link:before, .s2Link:before {
+  border: 1px solid #fff;
+  box-sizing: border-box;
+  content: " ";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transform: translateZ(0);
+  transition: transform 0.2s;
+  transition-property: transform;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
+  width: 100%;
+}

@@ -144,7 +144,7 @@ export class App extends Component {
           closeSearch={this.closeSearch}
           showSearch={this.state.showSearch}
           performSearch={this.performSearch}
-        />
+        /> {/* Properly closed the Search component */}
         {this.state.showSearch && <SearchResults results={this.state.searchResults} />}
         <Cart
           updateQuantity={this.updateQuantity}
