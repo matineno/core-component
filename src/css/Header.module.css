@@ -8,7 +8,7 @@
   position: absolute;
   z-index: 5;
   cursor: default;
-  padding: 20px 60px;
+  padding: 20px auto;
   padding-bottom: 20px;
 }
 
@@ -36,6 +36,7 @@
   font-weight: 500;
   letter-spacing: 5px;
   font-size: 24px;
+  margin-left: -5px;
 }
 
 .logoBlack {

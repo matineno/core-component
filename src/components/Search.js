@@ -40,10 +40,13 @@ function Search({ setSearchFor, closeSearch, showSearch }) {
         product.name.toLowerCase().includes(searchTerm.toLowerCase())
       );
       setSuggestions(filteredProducts);
+      if (filteredProducts.length === 0) {
+        history.push('/');
+      }
     } else {
       setSuggestions([]);
     }
-  }, [searchTerm]);
+  }, [searchTerm, history]);
 
   const handleInputChange = (event) => {
     setSearchTerm(event.target.value.trim());
@@ -57,7 +60,6 @@ function Search({ setSearchFor, closeSearch, showSearch }) {
   };
 
   useEffect(() => {
-    // Listen for navigation events and close the search bar when a product is clicked
     return history.listen(() => {
       handleSearchClick();
     });

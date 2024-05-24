@@ -83,18 +83,53 @@ const HomePage = (props) => {
             <div className={styles.galleryImages}>
               {shuffledProducts1.map((product, index) => (
                 <motion.li
-                key={product.id}
-                className={shopStyles.product}
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 50 }}
-                transition={{ duration: 0.3 }}
-              >
-                <Link
-                  to={`/shopping-cart/products/${product.id}`}
-                  className={shopStyles.productLink}
+                  key={product.id}
+                  className={shopStyles.product}
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 50 }}
+                  transition={{ duration: 0.3 }}
                 >
-                  <div key={index} className={productStyles.galleryItem}>
+                  <Link
+                    to={`/shopping-cart/products/${product.id}`}
+                    className={shopStyles.productLink}
+                  >
+                    <div key={index} className={productStyles.galleryItem}>
+                      <div className={shopStyles.productImage}>
+                        <img
+                          className={styles.frontImage}
+                          src={product.image}
+                          alt={product.name}
+                        />
+                        <img
+                          className={styles.backImage}
+                          src={product.previewImage}
+                          alt={product.name}
+                        />
+                      </div>
+                      <div className={productStyles.galleryItemInfo}>
+                        <p className={productStyles.galleryItemName}>{product.name}</p>
+                        <p className={productStyles.galleryItemPrice}>${product.price}</p>
+                      </div>
+                    </div>
+                  </Link>
+                </motion.li>
+              ))}
+            </div>
+            <div className={styles.galleryImages}>
+              {shuffledProducts2.map((product, index) => (
+                <motion.li
+                  key={product.id}
+                  className={shopStyles.product}
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 50 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <Link
+                    to={`/shopping-cart/products/${product.id}`}
+                    className={shopStyles.productLink}
+                  >
                     <div className={shopStyles.productImage}>
                       <img
                         className={styles.frontImage}
@@ -107,49 +142,14 @@ const HomePage = (props) => {
                         alt={product.name}
                       />
                     </div>
-                    <div className={productStyles.galleryItemInfo}>
-                      <p className={productStyles.galleryItemName}>{product.name}</p>
-                      <p className={productStyles.galleryItemPrice}>${product.price}</p>
+                    <div className={shopStyles.productName}>
+                      {product.name}
                     </div>
-                  </div>
-                </Link>
-              </motion.li>
-              ))}
-            </div>
-            <div className={styles.galleryImages}>
-              {shuffledProducts2.map((product, index) => (
-                <motion.li
-                key={product.id}
-                className={shopStyles.product}
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 50 }}
-                transition={{ duration: 0.3 }}
-              >
-                <Link
-                  to={`/shopping-cart/products/${product.id}`}
-                  className={shopStyles.productLink}
-                >
-                  <div className={shopStyles.productImage}>
-                    <img
-                      className={styles.frontImage}
-                      src={product.image}
-                      alt={product.name}
-                    />
-                    <img
-                      className={styles.backImage}
-                      src={product.previewImage}
-                      alt={product.name}
-                    />
-                  </div>
-                  <div className={shopStyles.productName}>
-                    {product.name}
-                  </div>
-                  <div className={shopStyles.productPrice}>
-                    ${product.price}
-                  </div>
-                </Link>
-              </motion.li>
+                    <div className={shopStyles.productPrice}>
+                      ${product.price}
+                    </div>
+                  </Link>
+                </motion.li>
               ))}
             </div>
           </div>
@@ -227,39 +227,6 @@ const HomePage = (props) => {
               transition={{ duration: 0.8 }}
             />
           </div>
-        </motion.section>
-
-        {/* Contact Form Section */}
-        <motion.section 
-          className={styles.contactSection}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1 }}
-        >
-          <h2 className={styles.contactTitle}>Contact Us</h2>
-          <form className={styles.form}>
-            <div className={styles.formGroup}>
-              <label htmlFor="name" className={styles.formLabel}>Name:</label>
-              <input type="text" id="name" className={styles.formInput} required />
-            </div>
-            <div className={styles.formGroup}>
-              <label htmlFor="email" className={styles.formLabel}>Email:</label>
-              <input type="email" id="email" className={styles.formInput} required />
-            </div>
-            <div className={styles.formGroup}>
-              <label htmlFor="message" className={styles.formLabel}>Message:</label>
-              <textarea id="message" className={styles.formTextarea} required></textarea>
-            </div>
-            <motion.button 
-              type="submit" 
-              className={styles.formButton}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Submit
-            </motion.button>
-          </form>
-
         </motion.section>
       </main>
     </div>
