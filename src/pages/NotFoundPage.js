@@ -26,7 +26,7 @@ const NotFoundPage = () => {
             <img src={image404} className={styles.image404} alt="404" />
           </div>
           <h3>Page Not Found</h3>
-          <p>Sorry, the page you are looking for does not exist or has been moved with our other deprecated products for recycling.</p>
+          <p>Sorry, the page you are looking for does not exist.</p>
           <div className={styles.buttonContainer}>
             <Link className={homeStyles.s1Link} to="/shopping-cart">
               Back to Home
