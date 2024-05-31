@@ -1,8 +1,7 @@
 {
   "files": {
-    "main.css": "/core-component/static/css/main.f1d11c33.css",
-    "main.js": "/core-component/static/js/main.8e723af2.js",
-    "static/media/bg.jpg": "/core-component/static/media/bg.47e4fc3bd61eb08a2a91.jpg",
+    "main.css": "/core-component/static/css/main.38142cd0.css",
+    "main.js": "/core-component/static/js/main.03df75f3.js",
     "static/media/img-02.gif": "/core-component/static/media/img-02.fdc38d562dfe107c9256.gif",
     "static/media/ZGhs2nWQR3WYAaLAvMpwg9.gif": "/core-component/static/media/ZGhs2nWQR3WYAaLAvMpwg9.14efa983f4b33c4cad48.gif",
     "static/media/404-background.jpg": "/core-component/static/media/404-background.02654b32be5d462cc157.jpg",
@@ -107,11 +106,11 @@
     "static/media/nzxt-h510-elite.png": "/core-component/static/media/nzxt-h510-elite.32ced281d2cd8f288a59.png",
     "static/media/ryzen-5600.webp": "/core-component/static/media/ryzen-5600.47bca2cbfe3e64e7404d.webp",
     "index.html": "/core-component/index.html",
-    "main.f1d11c33.css.map": "/core-component/static/css/main.f1d11c33.css.map",
-    "main.8e723af2.js.map": "/core-component/static/js/main.8e723af2.js.map"
+    "main.38142cd0.css.map": "/core-component/static/css/main.38142cd0.css.map",
+    "main.03df75f3.js.map": "/core-component/static/js/main.03df75f3.js.map"
   },
   "entrypoints": [
-    "static/css/main.f1d11c33.css",
-    "static/js/main.8e723af2.js"
+    "static/css/main.38142cd0.css",
+    "static/js/main.03df75f3.js"
   ]
 }
